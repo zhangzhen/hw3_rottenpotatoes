@@ -15,7 +15,9 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  flunk "Unimplemented"
+  regexp = /#{e1}.*#{e2}/m #  /m means match across newlines
+  page.body.should =~ regexp
+  # flunk "Unimplemented"
 end
 
 # Make it easier to express checking or unchecking several boxes at once
